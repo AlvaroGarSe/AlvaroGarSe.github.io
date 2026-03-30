@@ -68,6 +68,16 @@ ul {
         border-radius: 20px;
     }
 
+        .project img.GameEngine {
+            height: auto;
+            max-height: 500px;
+            width: auto;
+            max-width: 80%;
+            object-fit: scale-down;
+            margin: 0 auto 15px;
+            border-radius: 10px;
+        }
+
         .project img.PappasImg {
             height: auto;
             max-height: 500px;
@@ -76,7 +86,6 @@ ul {
             object-fit: scale-down;
             margin: 0 auto 15px;
         }
-
 
         .project img.PiratesImg {
             height: auto;

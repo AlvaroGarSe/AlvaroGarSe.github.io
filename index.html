@@ -4,189 +4,217 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alvaro Garcia Serrano - Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>Alvaro Garcia Serrano</h1>
-        <p>Software Engineer & Videogames Developer</p>
-        <!--<p>Software Engineer (Gameplay & Systems)</p>-->
-    </header>
+<div class="portfolio">
 
-<div class="container">
-    <section class="skills">
-        <section class="about">
-            <h2>About Me</h2>
-            <p>
-                Software engineering and videogame developer student specialized in gameplay and system development.
-                Focused in building scalable systems, low level engine architecture and gameplay mechanics while aiming
-                to high performance and player experience.
-            </p><br/>
-        </section>
-    </section>
+  <header class="hero">
+    <p class="hero-eyebrow">Portfolio — 2026</p>
+    <h1 class="hero-name">Alvaro<br><em>Garcia Serrano</em></h1>
+    <p class="hero-tagline">
+      Software Engineer focused on <strong>game systems and engine architecture</strong> . I enjoy building tools and 
+      engines that prioritize scalability, performance and player experience.
+    </p>
+  </header>
 
+  <section>
+    <p class="section-label">About</p>
+    <p class="about-text">
+      I'm a software engineering and game development student specializing in
+      <strong>gameplay systems, engine development and performance optimization</strong>.
+      My work centers on solving the technical constraints that limit game design: 
+      high entity counts, memory overhead and simulation scaling.<br><br>
+      
+      I enjoy working from <strong>low-level C++ engine work</strong> to building
+      <strong>modular systems </strong> useful scripting tools that can help artists, 
+      desginers and other developers through the game development process.
+    </p>
+  </section>
 
-    <section>
-        <h2>Projects</h2>
+  <section>
+    <p class="section-label">Projects</p>
+    <div class="projects-list">
 
-        <div class="projects">
-
-
-            <div class="project">
-                <img src="GameEngine.png" alt="Game Engine Image"  class="GameEngine">
-
-                <h3>C++ Game Engine Prototype</h3>
-
-                <p>Custom game engine built in C++ aimed to explore engine architectures and compare OOP vs Data-Oriented Programming in a grid based factory game</p>
-
-                <p><strong>What I did:</strong></p>
-                <ul>
-                    <li>Designed and implemented a modular game engine focusing on low level memory management</li>
-                    <li>Conducted a comparative analysis between OOP and Data-Oriented Programming for optimizing big grid simulations</li>
-                    <li>Implemented a basic save and load system for a grid based game</li>
-                    <li>Implemented multithreading for improving performance on some situations like saving</li>
-                </ul>
-
-                <p class="tags">C++ • Game Engine</p>
-
-                <div class="links">
-                    <a href="https://github.com/AlvaroGarSe/IA2_AlvaroGarcia_GameEngine" target="_blank">GitHub</a>
-                </div>
+      <!-- FEATURED -->
+      <div class="project-card">
+        <img src="GameEngine.png" alt="C++ Game Engine" class="project-img">
+        <div class="project-body">
+          <div class="project-header">
+            <h3 class="project-title">C++ Game Engine Prototype</h3>
+          </div>
+          <p class="project-desc">Custom game engine built from scratch in C++, designed to explore engine architectures and compare OOP vs Data-Oriented Programming in large-scale grid simulations.</p>
+          <ul class="project-did">
+            <!-- <li>Designed modular engine architecture with manual memory management and custom allocators</li> -->
+            <li>Conducted rigorous performance comparison between OOP and DOP for grid-based game simulation</li>
+            <li>Implemented multithreaded systems (save/load) for performance gains</li>
+          </ul>
+          <div class="project-footer">
+            <div class="tags">
+              <span class="tag highlight">C++</span>
+              <span class="tag highlight">Memory Management</span>
+              <span class="tag highlight">DOP</span>
+              <span class="tag highlight">Multithreading</span>
+              <span class="tag highlight">Game Engine</span>
             </div>
-
-            <div class="project">
-                <img src="EndlessFortress.jpg" alt="Endless Fortress Image">
-
-                <h3>Endless Fortress</h3>
-
-                <p>
-                    Roguelike + endless runner where the player alternates between traversal and combat encounters while improving their abilities and build.
-                </p>
-
-                <p><strong>What I did:</strong></p>
-                <ul>
-                    <li>Designed and implemented full UI system</li>
-                    <li>Built inventory system using ScriptableObjects and focused in high scalability</li>
-                    <li>Developed item system and integration into gameplay loop</li>
-                    <li>Integrated UI with gameplay systems</li>
-                    <li>Saving and loading system</li>
-                </ul>
-
-                <p class="tags">Unity • C# • Gameplay • Mobile</p>
-
-                <div class="links">
-                    <a href="https://shadowwizard-moneygang.itch.io/endless-fortress" target="_blank">Itch.io</a>
-                    <a href="https://github.com/Urkelele/EndlessFortress" target="_blank">GitHub</a>
-                </div>
+            <div class="project-links">
+              <a href="https://github.com/AlvaroGarSe/IA2_AlvaroGarcia_GameEngine" target="_blank">GitHub ↗</a>
             </div>
-
-
-            <div class="project">
-                <img src="WildeTidesIMG.jpg" alt="Project image">
-
-                <h3>Wild Tides</h3>
-
-                <p>Arcade boat game about navigating between islands while deffending yourself from evil pirates and scary tentacles by using your air cannon.</p>
-
-                <p><strong>What I did:</strong> Designed and implemented all the game UI, enemies management and behaviour</p>
-
-                <p><strong>What I did:</strong></p>
-                <ul>
-                    <li>Designed and implemented all the game UI</li>
-                    <li>Managed enemy spawning focusing on performance</li>
-                    <li>Implemented enemy AI behaviour</li>
-                </ul>
-
-                <p class="tags">Unity • C# • AI • Gameplay</p>
-
-                <div class="links">
-                    <a href="https://shadowwizard-moneygang.itch.io/wild-tides" target="_blank">Itch.io</a>
-                    <a href="https://github.com/eduardoVillar04/WildTides" target="_blank">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project">
-                <img src="PiratesAndDucks.png" alt="Pirates and Ducks Image" class="PiratesImg">
-
-                <h3>Pirates & Ducks</h3>
-
-                <p> Try to survive at float during 20 seconds while battling ferocious pirates and other unexpected threats</p>
-
-                <p><strong>What I did:</strong> Enemies management and behaviour</p>
-
-                <p class="tags">Unity • C# • Gameplay</p>
-
-                <div class="links">
-                    <a href="https://evillar.itch.io/pirates-and-ducks" target="_blank">Play on itch.io</a>
-                    <a href="https://github.com/Ger1y1/20SecondsShip" target="_blank">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project">
-                <img src="PappasClickeria.png" alt="Pappas Clickeria Image" class="PappasImg">
-
-                <h3>Pappa's Clickeria</h3>
-
-                <p>Clicker game where you devour pizzas to earn money, gain experience, and collect ingredients to unlock new pizzas.</p>
-
-                <p><strong>What I did:</strong> Designed and implemented all the game UI, saving and loading system and game structure</p>
-
-                <p class="tags">JavaScript</p>
-
-                <div class="links">
-                    <a href="https://shadowwizard-moneygang.itch.io/papas-clickeria" target="_blank">Play on itch.io</a>
-                    <a href="https://github.com/eduardoVillar04/PapasClickeria_Web2025" target="_blank">GitHub</a>
-                </div>
-            </div>
-
+          </div>
         </div>
-    </section>
+      </div>
 
-    <section class="skills">
-        <h2>Skills</h2>
-        <p>
-            C++, C#, Unity, Data Structures & Algorithms,
-            Object-Oriented Programming, Data-Oriented Programming, Git, Debugging
-        </p>
-        <br/>
-        <h2>Technical Arsenal</h2>
-        <div class="skills-grid">
-            <div>
-                <strong>Languages:</strong> C++, C, C#, Java, JavaScript, HTML, SQL, PHP.
+      <div class="project-card">
+        <img src="EndlessFortress.jpg" alt="Endless Fortress" class="project-img">
+        <div class="project-body">
+          <div class="project-header">
+            <h3 class="project-title">Endless Fortress</h3>
+          </div>
+          <p class="project-desc">Roguelike + endless runner with alternating traversal and combat encounters while improving their abilities and build.</p>
+          <ul class="project-did">
+            <li>Designed and implemented a ScriptableObject-based inventory system for easy content iteration</li>
+            <li>Item system with gameplay loop integration and save/load</li>
+            <li>Full UI system: design, implementation, and gameplay integration</li>
+          </ul>
+          <div class="project-footer">
+            <div class="tags">
+              <span class="tag highlight">Unity</span>
+              <span class="tag highlight">C#</span>
+              <span class="tag highlight">Scalable Systems</span>
+              <span class="tag">Gameplay</span>
+              <span class="tag">Mobile</span>
             </div>
-            <div>
-                <strong>Engines & Tools:</strong> Unity, Git, Godot, Miro.
+            <div class="project-links">
+              <a href="https://shadowwizard-moneygang.itch.io/endless-fortress" target="_blank">Itch.io ↗</a>
+              <a href="https://github.com/Urkelele/EndlessFortress" target="_blank">GitHub ↗</a>
             </div>
-            <div>
-                <strong>Programming Fundamentals:</strong> Data Structures & Algorithms, OOP, DOP, Multithreading, Memory Optimization.
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!--<section class="about">
-        <h2>About Me</h2>
-        <p>
-            Software engineering and videogame developer student specialized in gameplay and system development.
-            Focused in building scalable systems, low level engine architecture and gameplay mechanics while aiming 
-            to high performance and player experience.
-        </p>
-    </section>-->
+      <div class="project-card">
+        <img src="WildeTidesIMG.jpg" alt="Wild Tides" class="project-img">
+        <div class="project-body">
+          <div class="project-header">
+            <h3 class="project-title">Wild Tides</h3>
+          </div>
+          <p class="project-desc">Arcade boat game with real-time enemy combat. Built enemy systems with a focus on performance under high entity counts.</p>
+          <ul class="project-did">
+            <li>Performance-efficient enemy spawning system and lifecycle management</li>
+            <li>Enemy AI behaviour: patrol, detection, and attack state machines</li>
+            <li>Designed and implemented all game UI and HUD systems</li>
+          </ul>
+          <div class="project-footer">
+            <div class="tags">
+              <span class="tag highlight">Unity</span>
+              <span class="tag highlight">C#</span>
+              <span class="tag">AI</span>
+              <span class="tag">Gameplay</span>
+              <span class="tag">Performance</span>
+            </div>
+            <div class="project-links">
+              <a href="https://shadowwizard-moneygang.itch.io/wild-tides" target="_blank">Itch.io ↗</a>
+              <a href="https://github.com/eduardoVillar04/WildTides" target="_blank">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <section class="contact">
-        <h2>Contact</h2>
-            <p>Email: algarse04@gmail.com</p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/alvaro-garcia-serrano-8729a32b5/" target="_blank" style="color: #38bdf8; text-decoration: none">https://www.linkedin.com/in/alvaro-garcia-serrano-8729a32b5/</a></p>
-            <p>GitHub: <a href="https://github.com/alvarogarse" target="_blank" style="color: #38bdf8; text-decoration: none">https://github.com/alvarogarse</a></p>
+      <div class="project-card">
+        <img src="PiratesAndDucks.png" alt="Pirates and Ducks" class="project-img">
+        <div class="project-body">
+          <div class="project-header">
+            <h3 class="project-title">Pirates & Ducks</h3>
+          </div>
+          <p class="project-desc">Stay afloat for 20 seconds against waves of enemies. Built in a game jam context with rapid iteration.</p>
+          <ul class="project-did">
+            <li>Enemy management, spawning logic, and AI behaviour</li>
+          </ul>
+          <div class="project-footer">
+            <div class="tags">
+              <span class="tag highlight">Unity</span>
+              <span class="tag highlightag">C#</span>
+              <span class="tag">Gameplay</span>
+            </div>
+            <div class="project-links">
+              <a href="https://evillar.itch.io/pirates-and-ducks" target="_blank">Itch.io ↗</a>
+              <a href="https://github.com/Ger1y1/20SecondsShip" target="_blank">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    </section>
+      <div class="project-card">
+        <img src="PappasClickeria.png" alt="Pappas Clickeria" class="project-img">
+        <div class="project-body">
+          <div class="project-header">
+            <h3 class="project-title">Pappa's Clickeria</h3>
+          </div>
+          <p class="project-desc">Browser incremental clicker game with progression, unlockables, and persistent state.</p>
+          <ul class="project-did">
+            <li>Save/load via browser storage</li>
+            <li>Full UI system and game loop architecture</li>
+          </ul>
+          <div class="project-footer">  
+            <div class="tags">
+              <span class="tag highlight">JavaScript</span>
+              <span class="tag highlight">Scripting</span>
+              <span class="tag">Web</span>
+            </div>
+            <div class="project-links">
+              <a href="https://shadowwizard-moneygang.itch.io/papas-clickeria" target="_blank">Itch.io ↗</a>
+              <a href="https://github.com/eduardoVillar04/PapasClickeria_Web2025" target="_blank">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Skills</p>
+    <div class="skills-cols">
+      <div class="skill-block">
+        <p class="skill-block-label">Languages</p>
+        <p class="skill-block-content">C++ · C · C# · Java · JavaScript · HTML · SQL · PHP</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-block-label">Engines & Tools</p>
+        <p class="skill-block-content">Unity · Godot · Git · Miro</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-block-label">Fundamentals</p>
+        <p class="skill-block-content">Data Structures & Algorithms · OOP · DOP · Multithreading · Memory Optimization</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Contact</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="contact-item-label">Email</p>
+        <a href="mailto:algarse04@gmail.com">algarse04@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">LinkedIn</p>
+        <a href="https://www.linkedin.com/in/alvaro-garcia-serrano-8729a32b5/" target="_blank">Alvaro-Garcia-Serrano ↗</a>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">GitHub</p>
+        <a href="https://github.com/alvarogarse" target="_blank">github.com/alvarogarse ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Alvaro Garcia Serrano</footer>
 
 </div>
-
-<footer>
-  <p>© 2026 Alvaro Garcia Serrano</p>
-</footer>
 
 </body>
 </html>

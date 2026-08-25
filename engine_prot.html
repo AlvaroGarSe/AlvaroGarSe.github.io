@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ Game Engine Prototype - Álvaro García Serrano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav-back">
+    <a href="index.html">← Back to portfolio</a>
+  </nav>
+
+  <header class="project-hero">
+    <p class="project-eyebrow">Project - 2026</p>
+    <h1>C++ Game Engine<br><em>Prototype</em></h1>
+    <p class="project-summary">
+      A custom 2D game engine built from scratch in C++ to explore engine architecture and benchmark
+      <strong>Object-Oriented vs Data-Oriented Programming</strong> at scale.
+      The game simulates a factory environment with conveyors, miners, and crafters,
+      chosen because its high entity count makes performance differences measurable and meaningful.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Language</span>
+        <span class="meta-value">C++</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Renderer</span>
+        <span class="meta-value">SDL2</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Year</span>
+        <span class="meta-value">2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Type</span>
+        <span class="meta-value">Personal project</span>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag highlight">C++</span>
+      <span class="tag highlight">Memory Management</span>
+      <span class="tag highlight">Data-Oriented Design</span>
+      <span class="tag highlight">Multithreading</span>
+      <span class="tag highlight">Game Engine</span>
+      <span class="tag">SDL2</span>
+      <span class="tag">OOP</span>
+      <span class="tag">Performance</span>
+    </div>
+  </header>
+
+  <img src="GameEngine.png" alt="C++ Game Engine running a factory simulation" class="project-image">
+
+  <!-- CONTEXT -->
+  <section class="section">
+    <p class="section-label">Context</p>
+    <p class="body-text">
+      The engine started with a clear technical question at its centre:
+      <strong>how much does memory layout actually matter in a real simulation?</strong>
+      A factory game is the ideal approach: conveyors move items every tick, miners produce at a fixed rate,
+      crafters consume inputs and emit outputs. With potentially millions of entities updating per frame,
+      the difference between AoS and SoA becomes very relevant.
+    </p>
+    <p class="body-text" style="margin-top:1rem;">
+      Conveyors were implemented twice: once as a traditional
+      <strong>Array of Structs (AoS)</strong> where each conveyor holds all its own data,
+      and once as a <strong>Struct of Arrays (SoA)</strong> where each field is stored in its own
+      contiguous array. The same simulation ran against both implementations and frame times were
+      recorded across seven scenarios with increasing entity counts (see benchmark results section).
+    </p>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="section">
+    <p class="section-label">Architecture</p>
+    <div class="arch-img-wrapper">
+      <img src="GameEngineArchitecture.svg" alt="C++ Game Engine running a factory simulation" class="arch-img" style="height: 500px;">
+    </div>
+    <p class="body-text" style="margin-bottom:1.25rem;">
+      The engine is built around a set of manager singletons, each owning a distinct system:
+    </p>
+    <div class="systems-grid">
+      <div class="system-item">
+        <p class="system-name">GraphicManager</p>
+        <p class="system-desc">SDL2 rendering pipeline, camera-space transforms and texture rendering</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">GridManager</p>
+        <p class="system-desc">Tile-based world grid, building placement and spatial functionality</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">ObjectManager</p>
+        <p class="system-desc">Entity lifecycle, creation, update ordering and destruction for crafters and miners</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">ConveyorManager</p>
+        <p class="system-desc">Hosts both AoS and SoA implementations of conveyors for benchmarking</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">AssetManager</p>
+        <p class="system-desc">Centralized texture storage and reuse to reduce memory usage</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">SaveLoadManager</p>
+        <p class="system-desc">JSON serialization on a dedicated std::thread</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">Camera2D</p>
+        <p class="system-desc">Pan and zoom with transform applied per render pass</p>
+      </div>
+      <div class="system-item">
+        <p class="system-name">InputManager</p>
+        <p class="system-desc">SDL2 event polling, frame-based edge state tracking (press/release/hold) and raw input handling for player controls</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENCHMARKS -->
+  <section class="section">
+    <p class="section-label">Benchmark results</p>
+
+    <div class="stat-highlight">
+      <span class="stat-number">81%</span>
+      <span class="stat-desc">
+        faster with SoA when <strong>items are actively flowing</strong> on conveyors,
+        the scenario that most closely resembles a real gameplay session.
+      </span>
+    </div>
+
+    <div class="benchmark-grid">
+      <div class="bench-card">
+        <p class="bench-card-title">Conveyors only - no items</p>
+        <table class="bench-table">
+          <thead>
+            <tr><th>Conveyors</th><th>AoS</th><th>SoA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="entity">2,000,000</td><td class="aos">790 ms</td><td class="soa">720 ms</td></tr>
+            <tr><td class="entity">1,000,000</td><td class="aos">400 ms</td><td class="soa">360 ms</td></tr>
+            <tr><td class="entity">500,000</td><td class="aos">200 ms</td><td class="soa">180 ms</td></tr>
+            <tr><td class="entity">250,000</td><td class="aos">100 ms</td><td class="soa">90 ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bench-card">
+        <p class="bench-card-title">With miners + items flowing</p>
+        <table class="bench-table">
+          <thead>
+            <tr><th>Conveyors</th><th>AoS</th><th>SoA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="entity">100,000</td><td class="aos">290 ms</td><td class="soa">52 ms</td></tr>
+            <tr><td class="entity">50,000</td><td class="aos">142 ms</td><td class="soa">26 ms</td></tr>
+            <tr><td class="entity">25,000</td><td class="aos">71 ms</td><td class="soa">14 ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bench-card" style="margin-bottom:1.5rem;">
+      <p class="bench-card-title">AoS vs SoA - items flowing (visualised)</p>
+      <div class="bar-chart">
+        <div class="bar-group">
+          <p class="bar-group-label">100,000 conveyors</p>
+          <div class="bar-row">
+            <span class="bar-label">AoS</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill aos" style="width:100%"></div></div>
+            <span class="bar-value">290 ms</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">SoA</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill soa" style="width:17.9%"></div></div>
+            <span class="bar-value">52 ms</span>
+          </div>
+        </div>
+        <div class="bar-group">
+          <p class="bar-group-label">50,000 conveyors</p>
+          <div class="bar-row">
+            <span class="bar-label">AoS</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill aos" style="width:48.9%"></div></div>
+            <span class="bar-value">142 ms</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">SoA</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill soa" style="width:8.9%"></div></div>
+            <span class="bar-value">26 ms</span>
+          </div>
+        </div>
+        <div class="bar-group">
+          <p class="bar-group-label">25,000 conveyors</p>
+          <div class="bar-row">
+            <span class="bar-label">AoS</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill aos" style="width:24.4%"></div></div>
+            <span class="bar-value">71 ms</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">SoA</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill soa" style="width:4.8%"></div></div>
+            <span class="bar-value">14 ms</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><span class="legend-dot aos"></span>Array of Structs</div>
+        <div class="legend-item"><span class="legend-dot soa"></span>Struct of Arrays</div>
+      </div>
+    </div>
+
+    <p class="body-text">
+      When conveyors do not contain items, the performance difference is minimal.
+      The dramatic difference appears when <strong>items are actively moving</strong>:
+      each item lookup in AoS forces a cache miss by jumping between non-contiguous struct fields,
+      while SoA keeps all positions in one array and all states in another,
+      so sequential reads stay warm in cache. At 100,000 conveyors with items flowing,
+      AoS costs <strong>290 ms per frame</strong>. SoA brings that to <strong>52 ms</strong>.
+    </p>
+  </section>
+
+  <!-- MULTITHREADING -->
+  <section class="section">
+    <p class="section-label">Multithreaded save / load</p>
+    <p class="body-text">
+      Saving and loading touch the full world state at once: serializing the grid, all building positions,
+      conveyor states, and item locations to JSON. Running this on the main thread would freeze
+      the simulation for hundreds of milliseconds at large world sizes.
+    </p>
+    <p class="body-text" style="margin-top:1rem;">
+      The solution is a dedicated <strong>std::thread</strong> that takes a snapshot of the relevant state
+      and serializes it independently, while the main loop continues updating and rendering.
+      This keeps the game responsive during save operations regardless of world size.
+    </p>
+  </section>
+
+  <!-- LINKS -->
+  <section class="section">
+    <p class="section-label">Links</p>
+    <div class="cta-row">
+      <a class="cta-link" href="https://github.com/AlvaroGarSe/GameEngine_Prototype" target="_blank">GitHub ↗</a>
+      <a class="cta-link" href="index.html">← Back to portfolio</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Álvaro García Serrano</footer>
+
+</div>
+</body>
+</html>

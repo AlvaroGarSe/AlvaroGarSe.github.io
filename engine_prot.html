@@ -87,37 +87,38 @@
     </p>
     <div class="systems-grid">
       <div class="system-item">
-        <p class="system-name">GraphicManager</p>
-        <p class="system-desc">SDL2 rendering pipeline, camera-space transforms and texture rendering</p>
+        <p class="system-name">InputManager</p>
+        <p class="system-desc">SDL2 event polling, frame-based edge state tracking (press/release/hold) and raw input handling for player controls</p>
       </div>
       <div class="system-item">
         <p class="system-name">GridManager</p>
         <p class="system-desc">Tile-based world grid, building placement and spatial functionality</p>
       </div>
       <div class="system-item">
-        <p class="system-name">ObjectManager</p>
-        <p class="system-desc">Entity lifecycle, creation, update ordering and destruction for crafters and miners</p>
-      </div>
-      <div class="system-item">
         <p class="system-name">ConveyorManager</p>
         <p class="system-desc">Hosts both AoS and SoA implementations of conveyors for benchmarking</p>
       </div>
       <div class="system-item">
-        <p class="system-name">AssetManager</p>
-        <p class="system-desc">Centralized texture storage and reuse to reduce memory usage</p>
+        <p class="system-name">ObjectManager</p>
+        <p class="system-desc">Entity lifecycle, creation, update ordering and destruction for crafters and miners</p>
       </div>
       <div class="system-item">
-        <p class="system-name">SaveLoadManager</p>
-        <p class="system-desc">JSON serialization on a dedicated std::thread</p>
+        <p class="system-name">GraphicManager</p>
+        <p class="system-desc">SDL2 rendering pipeline, camera-space transforms and texture rendering</p>
       </div>
       <div class="system-item">
         <p class="system-name">Camera2D</p>
         <p class="system-desc">Pan and zoom with transform applied per render pass</p>
       </div>
       <div class="system-item">
-        <p class="system-name">InputManager</p>
-        <p class="system-desc">SDL2 event polling, frame-based edge state tracking (press/release/hold) and raw input handling for player controls</p>
+        <p class="system-name">MapLoader</p>
+        <p class="system-desc">JSON serialization on a dedicated std::thread</p>
       </div>
+      <div class="system-item">
+        <p class="system-name">AssetManager</p>
+        <p class="system-desc">Centralized texture storage and reuse to reduce memory usage</p>
+      </div>
+      
     </div>
   </section>
 
